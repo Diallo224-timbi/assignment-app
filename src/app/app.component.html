@@ -1,0 +1,43 @@
+<mat-toolbar style="background-color: lightblue;">
+   <mat-toolbar-row>
+        <h4>Menu</h4>
+        <button  mat-icon-button class="example-icon" matTooltip="aller au menu" (click)="toggleOpen()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <a type="button" mat-button matTooltip="aller vers l'accueil" routerLink="/home">
+            <mat-icon>home</mat-icon> Home
+        </a>
+        <span class="example-spacer"></span>
+        <div class="container">
+            <mat-slide-toggle color="primary" (click)="login()">{{log}}</mat-slide-toggle>
+        </div>
+        <a routerLink="/login">
+            <button mat-icon-button  matTooltip='Authentification'>
+                <mat-icon>person</mat-icon>
+            </button>
+        </a>
+   </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened">
+       <mat-list>
+        <mat-list-item><mat-icon >list</mat-icon><a routerLink="" mat-button>Liste des devoirs</a></mat-list-item>
+        <mat-list-item><mat-icon>add</mat-icon><a routerLink="/add" mat-button>Ajout d'un devoir</a></mat-list-item>
+        <mat-list-item><mat-icon>edit</mat-icon><a href="" mat-button>Modification d'un devoir</a></mat-list-item>
+        <mat-list-item><mat-icon>delete</mat-icon><a href="" mat-button>Suppression d'un dévoir</a></mat-list-item>
+        <mat-list-item><mat-icon>check_circle</mat-icon><a href="" mat-button>Génération des données de test</a></mat-list-item>
+       </mat-list>
+    </mat-sidenav>
+    <h1>
+        <nav><a routerLink="/home">{{title}}</a></nav>
+    </h1>
+    <router-outlet></router-outlet>
+   <!---- <app-assignments></app-assignments>-->
+</mat-sidenav-container>
+
+
+
+
+
+
+   

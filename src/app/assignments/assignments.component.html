@@ -1,0 +1,57 @@
+<!--
+<app-add-assignment  
+        (nouvelAssignment)="onNouvelAssignment($event)" 
+        *ngIf="formVisible">
+</app-add-assignment>
+-->
+<main *ngIf="!formVisible">
+    <!--<button mat-flat-button id="button" color="accent" (click)="peuplerBd()" class="ajoutBtn"> Peupler Base</button> -->
+    <div class="pagination">
+        <!-- Boutons de pagination avec des icônes Material -->
+        <button mat-button (click)="goToFirstPage()" [disabled]="currentPage === 1">
+          <mat-icon>first_page</mat-icon> Première Page
+        </button>
+        
+        <button mat-button (click)="goToPreviousPage()" [disabled]="!hasPrevPage">
+          <mat-icon>navigate_before</mat-icon> Page Précédente
+        </button>
+        
+        <button mat-button (click)="goToNextPage()" [disabled]="!hasNextPage">
+          <mat-icon>navigate_next</mat-icon> Page Suivante
+        </button>
+        
+        <button mat-button (click)="goToLastPage()" [disabled]="currentPage === totalPages">
+          <mat-icon>last_page</mat-icon> Dernière Page
+        </button>
+      
+        <div class="pagination-info">
+          Page {{ currentPage }} sur {{ totalPages }} | Total Documents: {{ totalDocs }}
+        </div>
+      </div>
+      
+      <mat-paginator [length]="totalDocs"
+                    [pageSize]="pageSize"
+                    [pageIndex]="currentPage - 1"
+                    [pageSizeOptions]="[5, 10, 20, 50]"
+                    (page)="onPageChange($event)">
+     </mat-paginator>
+    <mat-list *ngFor="let assignment of assignments" class="navigation-item">
+        <nav><a routerLink="/assignments/{{assignment.id}}">
+            <h3 mat-subheader> {{assignment.dateDeRendu | date: "dd/MM/yyyy"}}</h3>
+            <mat-list-item (click)="assignmentClique(assignment)">
+                <p appRendu *ngIf="assignment.rendu; else nonSoumis" style="color: green;">
+                    le devoir {{assignment.nom}} {{assignment.id}} a été rendu. 
+                </p>
+            <ng-template #nonSoumis >
+                <p style="color: red;">le devoir de {{assignment.nom}} {{assignment.id}} n'a pas été rendu.</p>
+            </ng-template>
+            <mat-divider></mat-divider>
+            </mat-list-item></a>
+        </nav>
+    </mat-list>
+ 
+    <!--<app-assignment-detail [assignmentTransmis]="assignmentSelectionne" (supprimerAssignment)="onSupprimeAssignment()"> </app-assignment-detail>
+</main>-->
+
+
+

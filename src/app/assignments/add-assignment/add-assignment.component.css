@@ -1,0 +1,15 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  /* fichier styles.css ou styles.scss */
+.mat-subheader {
+  font-size: 16px; /* Ajustez la taille selon vos besoins */
+  font-weight: 500; /* Épaisseur du texte */
+  color: rgba(0, 0, 0, 0.54); /* Couleur du texte */
+}
