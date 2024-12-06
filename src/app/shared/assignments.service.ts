@@ -11,7 +11,7 @@ import { bdInitialAssignments } from './data';
 export class AssignmentsService {
   assignments:Assignment[]=[]
   
-backenURL = "http://localhost:8010/api/assignments"
+backenURL = "https://backendrender-f73d.onrender.com/api/assignments"
   constructor(private logginService: LoggingService,private http: HttpClient ) { }
   
   /*getAssignment(id:number):Observable<Assignment>{
