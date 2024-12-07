@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { NgModule,Component, OnInit, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Assignment } from './assigment.model'
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
   imports: [CommonModule,
     MatInputModule,
     MatDatepickerModule,
-    MatButtonModule,
+    MatButtonModule,MatTableModule,
     FormsModule, MatList, MatListItem, MatDivider,
     MatListModule, 
     RouterModule,MatIcon,MatPaginator,MatTableModule],
@@ -29,7 +29,6 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
   styleUrl: './assignments.component.css'
 })
 export class AssignmentsComponent implements OnInit{
-
 // pagination
    // Liste des assignments
   totalDocs: number = 0;     // Total des documents
@@ -39,7 +38,8 @@ export class AssignmentsComponent implements OnInit{
   nextPage!: number;          // Page suivante
   prevPage!: number;          // Page précédente
   hasPrevPage: boolean = false;  // Vérifie si il y a une page précédente
-  hasNextPage: boolean = false;  // Vérifie si il y a une page suivante
+  hasNextPage: boolean = false; 
+  searchText: string = ''; // Vérifie si il y a une page suivante
 
 
   titre = "Formulaire d'ajout du devoire";
@@ -50,7 +50,11 @@ export class AssignmentsComponent implements OnInit{
   assignmentSelectionne!: Assignment; 
   
   assignments!: Assignment[];
-  valeurCharcher: string = '';
+  filteredAssignments!: Assignment[];
+  allfilteredAssignments!: Assignment[];
+
+
+
   displayedColumns: string[] = ['id', 'name devoire'];
   dataSource = new MatTableDataSource<any>(this.assignments)
 
@@ -87,6 +91,8 @@ export class AssignmentsComponent implements OnInit{
   loadAssignments(): void {
     this.assignmentsService.getAssignmentPagine(this.currentPage, this.pageSize).subscribe(data => {
       this.assignments = data.docs;
+      this.allfilteredAssignments = data.assigments;
+      this.filteredAssignments=this.assignments;
       this.totalDocs = data.totalDocs;
       this.totalPages = data.totalPages;
       this.nextPage = data.nextPage;
@@ -128,8 +134,22 @@ export class AssignmentsComponent implements OnInit{
     this.currentPage = 1;
     this.loadAssignments();
   }
-  dataFiltre(): void{
-    this.dataSource.filter= this.valeurCharcher.trim().toLowerCase();
+  
+  // recherche d'une donnée
+
+  applySearchFilter(): void {
+    // Filtrer les assignments en fonction du texte de recherche
+    if (this.searchText.trim() === '') {
+      this.filteredAssignments = this.assignments;  // Si rien n'est saisi, afficher toutes les données
+    } else {
+      this.filteredAssignments = this.assignments.filter(assignment =>
+        assignment.nom.toLowerCase().includes(this.searchText.toLowerCase()) 
+      );
+    }
+    this.totalDocs = this.filteredAssignments.length;  // Mettre à jour le total de documents après filtrage
+    this.totalPages = Math.ceil(this.totalDocs / this.pageSize);  // Mettre à jour le nombre total de pages
+    this.currentPage = 1;  // Réinitialiser à la première page
   }
+  
   
 }
