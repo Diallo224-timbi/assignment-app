@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatError, MatFormField,MatLabel } from '@angular/material/form-field';
-import { MatToolbar } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
@@ -14,7 +13,7 @@ import { MatButton } from '@angular/material/button';
   selector: 'app-loggin',
   standalone: true,
   imports: [FormsModule,CommonModule,MatCardModule,
-            MatError,MatFormField,MatLabel,MatToolbar,
+            MatError,MatFormField,MatLabel,
             MatIconModule,MatInput,MatButton],
   templateUrl: './loggin.component.html',
   styleUrl: './loggin.component.css'

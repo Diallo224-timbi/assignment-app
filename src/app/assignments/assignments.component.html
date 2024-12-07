@@ -2,10 +2,10 @@
 <app-add-assignment  
         (nouvelAssignment)="onNouvelAssignment($event)" 
         *ngIf="formVisible">
-</app-add-assignment>
+</app-add-assignment> 
 -->
 <main *ngIf="!formVisible">
-    <!--<button mat-flat-button id="button" color="accent" (click)="peuplerBd()" class="ajoutBtn"> Peupler Base</button> -->
+    <button mat-flat-button id="button" color="accent" (click)="peuplerBd()" class="ajoutBtn"> Peupler Base</button>
     <div class="pagination">
         <!-- Boutons de pagination avec des icônes Material -->
         <button mat-button (click)="goToFirstPage()" [disabled]="currentPage === 1">

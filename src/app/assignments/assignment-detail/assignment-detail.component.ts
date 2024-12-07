@@ -4,20 +4,18 @@ import { CommonModule } from '@angular/common';
 import { MatCard, MatCardActions, MatCardContent, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { AssignmentsService } from '../../shared/assignments.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
 @Component({
   selector: 'app-assignment-detail',
   standalone: true,
   imports: [CommonModule,
             MatCard,
-            MatCardContent,
             MatCardTitle,
             MatCardSubtitle,
-            MatCheckboxModule,MatButtonModule,MatIcon,MatTooltip,MatCardActions,RouterLink
+            MatCheckboxModule,MatButtonModule,MatTooltip,MatCardActions
           ],
     templateUrl: './assignment-detail.component.html',
     styleUrl: './assignment-detail.component.css'
@@ -78,11 +76,11 @@ onClickEdit(){
 
   }
   isAdmin():boolean{
-    if(this.authService.isAdmine()){
+    /*if(this.authService.isAdmine()){
       return this.authService.isLogged() && this.authService.isAdmine();
     }
-    return true;
-    //return this.authService.isLogged() && this.authService.isAdmine();
+    return true;*/
+    return this.authService.isLogged() && this.authService.isAdmine();
   }
   canEdit(): boolean {
     return this.authService.isLogged() && this.authService.isAdmine();

@@ -31,6 +31,7 @@ export class AddAssignmentComponent {
   id!: number;
   nomDevoir!: string;
   dateRendu!: Date;
+  rendu!: false;
 
  
 
@@ -38,21 +39,22 @@ export class AddAssignmentComponent {
 
   generateRandomId(): number {
     // Génère un ID aléatoire entre 1 et 1000 par exemple
-    return Math.floor(Math.random() * 1000) + 1;
+    return Math.floor(Math.random() * 5000) + 1;
   }
   onSubmit(){
     const newAssignment = new Assignment();
     newAssignment.id = this.generateRandomId(); 
     newAssignment.nom = this.nomDevoir; 
     newAssignment.dateDeRendu = this.dateRendu;
-    newAssignment.rendu= false
+    newAssignment.rendu= this.rendu;
     //this.assignments.push(newAssignment)  
     //this.nouvelAssignment.emit(newAssignment)
     
     this.assignmentServices.addAssignment(newAssignment)
     .subscribe(message=>console.log(message));
    // this.router.navigate(['/home'])
-   console.log("je suis "+ newAssignment.dateDeRendu)
+   console.log("assignment ajouté avec succès")
+   
   }
 
 }

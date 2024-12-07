@@ -22,12 +22,11 @@ import { AuthService } from './shared/auth.service';
   
   imports: [
     RouterOutlet,
-    AssignmentsComponent,
     CommonModule,
     MatToolbarModule,
     MatIcon,
     MatButtonModule, MatTooltipModule, MatSidenavModule, MatListModule,
-    AssignmentDetailComponent,MatCardModule,RouterOutlet,RouterLink,MatSlideToggle
+    MatCardModule,RouterOutlet,RouterLink,MatSlideToggle
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
