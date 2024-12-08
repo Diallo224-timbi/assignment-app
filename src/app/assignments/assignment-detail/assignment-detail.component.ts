@@ -55,10 +55,9 @@ export class AssignmentDetailComponent implements OnInit {
     .subscribe((message)=>console.log(message));
 
      if(!this.assignmentTransmis)return ;
-
      this.router.navigate(['/home']);
+    
   }
-
 onClickEdit(){
   this.router.navigate(["/assignment",this.assignmentTransmis.id,"edit"],
     {queryParams:{nomDevoir:this.assignmentTransmis.nom},fragment:"edition"}

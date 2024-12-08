@@ -63,4 +63,7 @@ export class AppComponent {
     this.opened =!this.opened
   }
   conn!:'connecter';
+
+
+  
 }

@@ -68,7 +68,7 @@ export class AssignmentsComponent implements OnInit{
       onSupprimeAssignment() {
           this.assignments = this.assignments.filter(a => a !== this.assignmentSelectionne);
         }
-
+        
         constructor(private assignmentsService: AssignmentsService,private route:ActivatedRoute) {}
         
           ngOnInit(){

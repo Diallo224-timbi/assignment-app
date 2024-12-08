@@ -48,9 +48,12 @@ backenURL = "https://backendrender-f73d.onrender.com/api/assignments"
 
   deleteAssignment(assigment:Assignment):Observable<any>{
   
-    return this.http.delete<Assignment>(this.backenURL+"/"+assigment._id)
+    return this.http.delete<Assignment>(this.backenURL+"/"+assigment._id);
+    
+    
+    
   }
-
+  
   // peupler la base de donnée
 
   peuplerBDavecForkJoin():Observable<any>{
